@@ -256,24 +256,37 @@
 
   function outputMeasurements(photo) {
     const frameWidth = photo.naturalWidth;
-    const footerHeight = frameMeasurements(photo).footerHeight;
-    const frameHeight = photo.naturalHeight + footerHeight;
+    const baseFooterHeight = frameMeasurements(photo).footerHeight;
+    const frameHeight = photo.naturalHeight + baseFooterHeight;
     if (!threadsPadding.checked) {
-      return { width: frameWidth, height: frameHeight, offsetX: 0, offsetY: 0 };
+      return { width: frameWidth, height: frameHeight, footerHeight: baseFooterHeight, footerScale: 1, offsetX: 0, offsetY: 0 };
     }
 
     const ratio = photo.naturalHeight > frameWidth ? [3, 4]
       : photo.naturalHeight < frameWidth ? [4, 3] : [1, 1];
     const margin = Math.max(2, Math.round(Math.min(frameWidth, frameHeight) * 0.02));
-    const unit = Math.ceil(Math.max(
+    let unit = Math.ceil(Math.max(
       (frameWidth + 2 * margin) / ratio[0],
       (frameHeight + 2 * margin) / ratio[1],
     ));
+    let footerScale;
+    let footerHeight;
+    // Scale the strip with its width so the original text and divider proportions stay intact.
+    // Cap the scale for exceptionally narrow, tall images so a 3:4 canvas remains possible.
+    while (true) {
+      footerScale = Math.min(ratio[0] * unit / frameWidth, 2);
+      footerHeight = Math.round(baseFooterHeight * footerScale);
+      const requiredUnit = Math.ceil((photo.naturalHeight + footerHeight + 2 * margin) / ratio[1]);
+      if (requiredUnit <= unit) break;
+      unit = requiredUnit;
+    }
     const width = ratio[0] * unit;
     const height = ratio[1] * unit;
     return {
       width,
       height,
+      footerHeight,
+      footerScale,
       offsetX: Math.floor((width - frameWidth) / 2),
       offsetY: Math.floor((height - footerHeight - photo.naturalHeight) / 2),
     };
@@ -619,12 +632,11 @@
     if (!image) return false;
     const photoWidth = image.naturalWidth;
     const photoHeight = image.naturalHeight;
-    const { portrait, footerHeight, dateSize: originalDateSize } = frameMeasurements(image);
+    const { portrait, dateSize: originalDateSize } = frameMeasurements(image);
     const output = outputMeasurements(image);
     const width = output.width;
-    const dateSize = threadsPadding.checked && portrait
-      ? Math.round(Math.max(15, Math.min(footerHeight * 0.145, width * 0.024)))
-      : originalDateSize;
+    const footerHeight = output.footerHeight;
+    const dateSize = Math.round(originalDateSize * output.footerScale);
     const scale = width / 1800;
     const pad = Math.round(width * 0.036);
     const footerTop = output.height - footerHeight;
