@@ -38,8 +38,8 @@
       defaultAperture: '將光圈設為 f/2.8', defaultShutter: '將快門設為 1/150 秒', defaultFocal: '將焦距設為 77 mm', defaultIso: '將 ISO 設為 640',
       customText: '自訂文字', customPlaceholder: '輸入名字、角色名或想顯示的文字', customSize: '自訂文字大小',
       customHint: '顯示在底框右側、拍攝參數下方；文字過長時會自動縮小。',
-      threadsPaddingToggle: '補白至 Threads 多圖預覽比例',
-      threadsPaddingHint: '參考範例：直式 3:4、橫式 4:3、方形 1:1。保留完整圖片，只在外圍加白邊。',
+      threadsPaddingToggle: '延伸背景至 Threads 預覽比例',
+      threadsPaddingHint: '直式 3:4、橫式 4:3、方形 1:1。保留完整截圖，以柔和背景補足外圍。',
       copyrightToggle: '在底框顯示 © SQUARE ENIX', copyrightHint: '原圖已有著作權標示時，可取消勾選。',
       download: '下載圖片', preview: '預覽', zoom: '縮放', noImage: '尚未選擇圖片', previewPlaceholder: '加框後的圖片會顯示在這裡',
       canvasLabel: '加上白色底框的圖片預覽', footerLabel: 'FFXIV 素材使用資訊',
@@ -54,7 +54,7 @@
       dateBlankWithFile: '日期與時間尚未填寫；可自行輸入，或帶入檔案修改時間。',
       dateBlankNoFile: '日期與時間尚未填寫；選擇圖片後可自動帶入。',
       exportInitial: '沿用原圖寬度，在底部加上白色底框並輸出 PNG。',
-      exportPadded: '保留原圖與資訊底框，在外圍補白至 Threads 多圖預覽比例並輸出 PNG。',
+      exportPadded: '保留完整截圖，以柔和背景延伸至 Threads 預覽比例，並輸出 PNG。',
       exportComplete: '已產生 {width} × {height} px 的 PNG。',
       invalidFile: '請選擇 PNG、JPG／JPEG 或 WebP 圖片。', openFailed: '無法開啟這張圖片，請選擇另一個檔案。',
       pngFailed: '無法產生 PNG，請改用較小的圖片再試。', downloadStarted: '已開始下載圖片。',
@@ -72,8 +72,8 @@
       defaultAperture: 'Set aperture to f/2.8', defaultShutter: 'Set shutter to 1/150 second', defaultFocal: 'Set focal length to 77 mm', defaultIso: 'Set ISO to 640',
       customText: 'Custom text', customPlaceholder: 'Name, character name, or other text', customSize: 'Custom text size',
       customHint: 'Appears below the camera settings on the right side of the frame. Long text shrinks to fit.',
-      threadsPaddingToggle: 'Add white space for Threads multi-image previews',
-      threadsPaddingHint: 'Based on the example: 3:4 portrait, 4:3 landscape, or 1:1 square. Keeps the full image and adds white space around it.',
+      threadsPaddingToggle: 'Extend background for Threads previews',
+      threadsPaddingHint: '3:4 portrait, 4:3 landscape, or 1:1 square. Keeps the full screenshot and fills the surrounding area with a soft background.',
       copyrightToggle: 'Show © SQUARE ENIX in the frame', copyrightHint: 'Turn this off if the original image already includes a copyright notice.',
       download: 'Download image', preview: 'Preview', zoom: 'Zoom', noImage: 'No image selected', previewPlaceholder: 'Your framed image will appear here',
       canvasLabel: 'Preview of the image with a white information strip', footerLabel: 'FFXIV content use information',
@@ -88,7 +88,7 @@
       dateBlankWithFile: 'No date or time entered. Enter one or use the file modified time.',
       dateBlankNoFile: 'No date or time entered. Select an image to fill it automatically.',
       exportInitial: 'Keeps the original image width, adds a white strip below, and exports a PNG.',
-      exportPadded: 'Keeps the full image and information strip, adds white space for Threads multi-image previews, and exports a PNG.',
+      exportPadded: 'Keeps the full screenshot, extends a soft background to the Threads preview ratio, and exports a PNG.',
       exportComplete: 'Created a {width} × {height} px PNG.',
       invalidFile: 'Choose a PNG, JPG/JPEG, or WebP image.', openFailed: 'Could not open this image. Choose another file.',
       pngFailed: 'Could not create a PNG. Try a smaller image.', downloadStarted: 'Image download started.',
@@ -106,8 +106,8 @@
       defaultAperture: '絞りを f/2.8 に設定', defaultShutter: 'シャッターを 1/150 秒に設定', defaultFocal: '焦点距離を 77 mm に設定', defaultIso: 'ISO を 640 に設定',
       customText: '自由入力の文字', customPlaceholder: '名前、キャラクター名など', customSize: '文字の大きさ',
       customHint: '情報欄の右側、撮影設定の下に表示します。長い文字は収まるように縮小されます。',
-      threadsPaddingToggle: 'Threadsの複数画像プレビュー用に白い余白を追加',
-      threadsPaddingHint: '参考例：縦長は3:4、横長は4:3、正方形は1:1。画像全体を残し、外側に白い余白を追加します。',
+      threadsPaddingToggle: 'Threadsのプレビュー比率に合わせて背景を拡張',
+      threadsPaddingHint: '縦長は3:4、横長は4:3、正方形は1:1。画像全体を残し、周囲を柔らかな背景で補います。',
       copyrightToggle: '情報欄に © SQUARE ENIX を表示', copyrightHint: '元画像に権利表記がある場合はオフにできます。',
       download: '画像をダウンロード', preview: 'プレビュー', zoom: '拡大率', noImage: '画像が選択されていません', previewPlaceholder: '枠付きの画像がここに表示されます',
       canvasLabel: '白い情報欄を付けた画像のプレビュー', footerLabel: 'FFXIV素材の利用について',
@@ -122,7 +122,7 @@
       dateBlankWithFile: '日時が未入力です。入力するか、ファイルの更新日時を使用してください。',
       dateBlankNoFile: '日時が未入力です。画像を選ぶと自動で入力できます。',
       exportInitial: '元画像の横幅を維持し、下部に白い情報欄を追加してPNGで保存します。',
-      exportPadded: '元画像と情報欄を残し、Threadsの複数画像プレビュー用に外側を白く埋めてPNGで保存します。',
+      exportPadded: '元画像を残し、背景をThreadsのプレビュー比率まで柔らかく拡張してPNGで保存します。',
       exportComplete: '{width} × {height} px のPNGを作成しました。',
       invalidFile: 'PNG、JPG／JPEG、WebP画像を選択してください。', openFailed: '画像を開けませんでした。別のファイルを選択してください。',
       pngFailed: 'PNGを作成できませんでした。小さめの画像でお試しください。', downloadStarted: '画像のダウンロードを開始しました。',
@@ -172,6 +172,7 @@
   let toastTimer = 0;
   let loadToken = 0;
   let dateEditVersion = 0;
+  let ambientCache = null;
   const xivMark = new Image();
   xivMark.onload = () => renderFrame();
   xivMark.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(byId('xiv-mark')))}`;
@@ -254,7 +255,8 @@
 
   function outputMeasurements(photo) {
     const frameWidth = photo.naturalWidth;
-    const frameHeight = photo.naturalHeight + frameMeasurements(photo).footerHeight;
+    const footerHeight = frameMeasurements(photo).footerHeight;
+    const frameHeight = photo.naturalHeight + footerHeight;
     if (!threadsPadding.checked) {
       return { width: frameWidth, height: frameHeight, offsetX: 0, offsetY: 0 };
     }
@@ -272,8 +274,44 @@
       width,
       height,
       offsetX: Math.floor((width - frameWidth) / 2),
-      offsetY: Math.floor((height - frameHeight) / 2),
+      offsetY: Math.floor((height - footerHeight - photo.naturalHeight) / 2),
     };
+  }
+
+  function ambientBackground(photo, width, height) {
+    if (ambientCache?.photo === photo && ambientCache.width === width && ambientCache.height === height) {
+      return ambientCache.canvas;
+    }
+    const layer = document.createElement('canvas');
+    const scale = Math.min(1, 600 / width);
+    layer.width = Math.max(1, Math.round(width * scale));
+    layer.height = Math.max(1, Math.round(height * scale));
+    const context = layer.getContext('2d', { alpha: false });
+    if (!context) return null;
+    context.fillStyle = '#f3f0e9';
+    context.fillRect(0, 0, layer.width, layer.height);
+    context.imageSmoothingQuality = 'high';
+    if ('filter' in context) {
+      const blur = Math.max(8, Math.round(layer.width * 0.045));
+      context.filter = `blur(${blur}px)`;
+      context.drawImage(photo, -blur * 2, -blur * 2, layer.width + blur * 4, layer.height + blur * 4);
+      context.filter = 'none';
+    } else {
+      const small = document.createElement('canvas');
+      small.width = Math.max(1, Math.round(layer.width / 18));
+      small.height = Math.max(1, Math.round(layer.height / 18));
+      const smallContext = small.getContext('2d');
+      if (smallContext) {
+        smallContext.drawImage(photo, 0, 0, small.width, small.height);
+        context.drawImage(small, 0, 0, layer.width, layer.height);
+      } else {
+        context.drawImage(photo, 0, 0, layer.width, layer.height);
+      }
+    }
+    context.fillStyle = 'rgba(243, 240, 233, 0.18)';
+    context.fillRect(0, 0, layer.width, layer.height);
+    ambientCache = { photo, width, height, canvas: layer };
+    return layer;
   }
 
   function updateSignatureSizeLabel() {
@@ -483,6 +521,7 @@
       if (imageUrl) URL.revokeObjectURL(imageUrl);
       imageUrl = nextUrl;
       image = nextImage;
+      ambientCache = null;
       selectedFile = file;
       fileInput.value = '';
       dropzone.hidden = true;
@@ -574,14 +613,17 @@
 
   function renderFrame(targetCanvas = canvas) {
     if (!image) return false;
-    const width = image.naturalWidth;
+    const photoWidth = image.naturalWidth;
     const photoHeight = image.naturalHeight;
-    const { portrait, footerHeight, dateSize } = frameMeasurements(image);
+    const { portrait, footerHeight, dateSize: originalDateSize } = frameMeasurements(image);
+    const output = outputMeasurements(image);
+    const width = output.width;
+    const dateSize = threadsPadding.checked && portrait
+      ? Math.round(Math.max(15, Math.min(footerHeight * 0.145, width * 0.024)))
+      : originalDateSize;
     const scale = width / 1800;
     const pad = Math.round(width * 0.036);
-    const footerTop = photoHeight;
-    const footerBottom = photoHeight + footerHeight;
-    const output = outputMeasurements(image);
+    const footerTop = output.height - footerHeight;
     const dividerX = Math.round(width * (portrait ? 0.555 : 0.69));
     const topLine = footerTop + footerHeight * 0.24;
     const dividerBottom = footerTop + footerHeight * 0.84;
@@ -599,10 +641,17 @@
     const ctx = targetCanvas.getContext('2d', { alpha: false });
     if (!ctx) return false;
     ctx.setTransform(targetCanvas.width / output.width, 0, 0, targetCanvas.height / output.height, 0, 0);
+    ctx.imageSmoothingQuality = 'high';
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, output.width, output.height);
-    ctx.translate(output.offsetX, output.offsetY);
-    ctx.drawImage(image, 0, 0, width, photoHeight);
+    if (threadsPadding.checked) {
+      const ambient = ambientBackground(image, width, footerTop);
+      if (ambient) ctx.drawImage(ambient, 0, 0, width, footerTop);
+      const border = Math.max(2, Math.round(Math.min(photoWidth, photoHeight) * 0.006));
+      ctx.fillRect(output.offsetX - border, output.offsetY - border,
+        photoWidth + border * 2, photoHeight + border * 2);
+    }
+    ctx.drawImage(image, output.offsetX, output.offsetY, photoWidth, photoHeight);
 
     ctx.strokeStyle = '#d9d9d7';
     ctx.lineWidth = Math.max(1, scale * 0.75);
