@@ -8,8 +8,8 @@
     <title>FFXIV SS FRAME</title>
     <link rel="icon" type="image/svg+xml" href="xiv-favicon.svg?v=3">
     <script>try { if (localStorage.getItem('ffxiv-frame-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (error) {}</script>
-    <link rel="stylesheet" href="styles.css?v=10">
-    <script src="app.js?v=11" defer></script>
+    <link rel="stylesheet" href="styles.css?v=11">
+    <script src="app.js?v=12" defer></script>
   </head>
   <body>
     <div class="page-shell">
@@ -133,11 +133,17 @@
               <p class="field-hint" data-i18n="customHint">顯示在底框右側、拍攝參數下方；文字過長時會自動縮小。</p>
             </div>
 
-            <label class="copyright-toggle">
+            <label class="option-toggle threads-toggle">
+              <input id="threads-padding" type="checkbox">
+              <span data-i18n="threadsPaddingToggle">補白至 Threads 多圖預覽比例</span>
+            </label>
+            <p class="field-hint toggle-hint" data-i18n="threadsPaddingHint">參考範例：直式 3:4、橫式 4:3、方形 1:1。保留完整圖片，只在外圍加白邊。</p>
+
+            <label class="option-toggle">
               <input id="show-copyright" type="checkbox" checked>
               <span data-i18n="copyrightToggle">在底框顯示 © SQUARE ENIX</span>
             </label>
-            <p class="field-hint copyright-hint" data-i18n="copyrightHint">原圖已有著作權標示時，可取消勾選。</p>
+            <p class="field-hint toggle-hint" data-i18n="copyrightHint">原圖已有著作權標示時，可取消勾選。</p>
 
             <div class="save-row">
               <button class="save-button" id="download-image" type="button" disabled>

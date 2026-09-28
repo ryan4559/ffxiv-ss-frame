@@ -11,6 +11,7 @@
   const previewStage = byId('preview-stage');
   const previewZoom = byId('preview-zoom');
   const showCopyright = byId('show-copyright');
+  const threadsPadding = byId('threads-padding');
   const canvas = byId('preview-canvas');
   // A 4K screenshot plus its footer fits below this limit at native resolution.
   const previewMaxPixels = 12_000_000;
@@ -37,6 +38,8 @@
       defaultAperture: '將光圈設為 f/2.8', defaultShutter: '將快門設為 1/150 秒', defaultFocal: '將焦距設為 77 mm', defaultIso: '將 ISO 設為 640',
       customText: '自訂文字', customPlaceholder: '輸入名字、角色名或想顯示的文字', customSize: '自訂文字大小',
       customHint: '顯示在底框右側、拍攝參數下方；文字過長時會自動縮小。',
+      threadsPaddingToggle: '補白至 Threads 多圖預覽比例',
+      threadsPaddingHint: '參考範例：直式 3:4、橫式 4:3、方形 1:1。保留完整圖片，只在外圍加白邊。',
       copyrightToggle: '在底框顯示 © SQUARE ENIX', copyrightHint: '原圖已有著作權標示時，可取消勾選。',
       download: '下載圖片', preview: '預覽', zoom: '縮放', noImage: '尚未選擇圖片', previewPlaceholder: '加框後的圖片會顯示在這裡',
       canvasLabel: '加上白色底框的圖片預覽', footerLabel: 'FFXIV 素材使用資訊',
@@ -51,6 +54,7 @@
       dateBlankWithFile: '日期與時間尚未填寫；可自行輸入，或帶入檔案修改時間。',
       dateBlankNoFile: '日期與時間尚未填寫；選擇圖片後可自動帶入。',
       exportInitial: '沿用原圖寬度，在底部加上白色底框並輸出 PNG。',
+      exportPadded: '保留原圖與資訊底框，在外圍補白至 Threads 多圖預覽比例並輸出 PNG。',
       exportComplete: '已產生 {width} × {height} px 的 PNG。',
       invalidFile: '請選擇 PNG、JPG／JPEG 或 WebP 圖片。', openFailed: '無法開啟這張圖片，請選擇另一個檔案。',
       pngFailed: '無法產生 PNG，請改用較小的圖片再試。', downloadStarted: '已開始下載圖片。',
@@ -68,6 +72,8 @@
       defaultAperture: 'Set aperture to f/2.8', defaultShutter: 'Set shutter to 1/150 second', defaultFocal: 'Set focal length to 77 mm', defaultIso: 'Set ISO to 640',
       customText: 'Custom text', customPlaceholder: 'Name, character name, or other text', customSize: 'Custom text size',
       customHint: 'Appears below the camera settings on the right side of the frame. Long text shrinks to fit.',
+      threadsPaddingToggle: 'Add white space for Threads multi-image previews',
+      threadsPaddingHint: 'Based on the example: 3:4 portrait, 4:3 landscape, or 1:1 square. Keeps the full image and adds white space around it.',
       copyrightToggle: 'Show © SQUARE ENIX in the frame', copyrightHint: 'Turn this off if the original image already includes a copyright notice.',
       download: 'Download image', preview: 'Preview', zoom: 'Zoom', noImage: 'No image selected', previewPlaceholder: 'Your framed image will appear here',
       canvasLabel: 'Preview of the image with a white information strip', footerLabel: 'FFXIV content use information',
@@ -82,6 +88,7 @@
       dateBlankWithFile: 'No date or time entered. Enter one or use the file modified time.',
       dateBlankNoFile: 'No date or time entered. Select an image to fill it automatically.',
       exportInitial: 'Keeps the original image width, adds a white strip below, and exports a PNG.',
+      exportPadded: 'Keeps the full image and information strip, adds white space for Threads multi-image previews, and exports a PNG.',
       exportComplete: 'Created a {width} × {height} px PNG.',
       invalidFile: 'Choose a PNG, JPG/JPEG, or WebP image.', openFailed: 'Could not open this image. Choose another file.',
       pngFailed: 'Could not create a PNG. Try a smaller image.', downloadStarted: 'Image download started.',
@@ -99,6 +106,8 @@
       defaultAperture: '絞りを f/2.8 に設定', defaultShutter: 'シャッターを 1/150 秒に設定', defaultFocal: '焦点距離を 77 mm に設定', defaultIso: 'ISO を 640 に設定',
       customText: '自由入力の文字', customPlaceholder: '名前、キャラクター名など', customSize: '文字の大きさ',
       customHint: '情報欄の右側、撮影設定の下に表示します。長い文字は収まるように縮小されます。',
+      threadsPaddingToggle: 'Threadsの複数画像プレビュー用に白い余白を追加',
+      threadsPaddingHint: '参考例：縦長は3:4、横長は4:3、正方形は1:1。画像全体を残し、外側に白い余白を追加します。',
       copyrightToggle: '情報欄に © SQUARE ENIX を表示', copyrightHint: '元画像に権利表記がある場合はオフにできます。',
       download: '画像をダウンロード', preview: 'プレビュー', zoom: '拡大率', noImage: '画像が選択されていません', previewPlaceholder: '枠付きの画像がここに表示されます',
       canvasLabel: '白い情報欄を付けた画像のプレビュー', footerLabel: 'FFXIV素材の利用について',
@@ -113,6 +122,7 @@
       dateBlankWithFile: '日時が未入力です。入力するか、ファイルの更新日時を使用してください。',
       dateBlankNoFile: '日時が未入力です。画像を選ぶと自動で入力できます。',
       exportInitial: '元画像の横幅を維持し、下部に白い情報欄を追加してPNGで保存します。',
+      exportPadded: '元画像と情報欄を残し、Threadsの複数画像プレビュー用に外側を白く埋めてPNGで保存します。',
       exportComplete: '{width} × {height} px のPNGを作成しました。',
       invalidFile: 'PNG、JPG／JPEG、WebP画像を選択してください。', openFailed: '画像を開けませんでした。別のファイルを選択してください。',
       pngFailed: 'PNGを作成できませんでした。小さめの画像でお試しください。', downloadStarted: '画像のダウンロードを開始しました。',
@@ -240,6 +250,30 @@
     const footerHeight = Math.max(132, Math.round(portrait ? photo.naturalHeight * 0.109 : width * 0.118));
     const dateSize = Math.round(Math.max(15, portrait ? Math.min(footerHeight * 0.145, width * 0.024) : footerHeight * 0.145));
     return { portrait, footerHeight, dateSize };
+  }
+
+  function outputMeasurements(photo) {
+    const frameWidth = photo.naturalWidth;
+    const frameHeight = photo.naturalHeight + frameMeasurements(photo).footerHeight;
+    if (!threadsPadding.checked) {
+      return { width: frameWidth, height: frameHeight, offsetX: 0, offsetY: 0 };
+    }
+
+    const ratio = photo.naturalHeight > frameWidth ? [3, 4]
+      : photo.naturalHeight < frameWidth ? [4, 3] : [1, 1];
+    const margin = Math.max(2, Math.round(Math.min(frameWidth, frameHeight) * 0.02));
+    const unit = Math.ceil(Math.max(
+      (frameWidth + 2 * margin) / ratio[0],
+      (frameHeight + 2 * margin) / ratio[1],
+    ));
+    const width = ratio[0] * unit;
+    const height = ratio[1] * unit;
+    return {
+      width,
+      height,
+      offsetX: Math.floor((width - frameWidth) / 2),
+      offsetY: Math.floor((height - frameHeight) / 2),
+    };
   }
 
   function updateSignatureSizeLabel() {
@@ -459,7 +493,7 @@
       byId('file-name').textContent = file.name;
       byId('file-size').textContent = `${image.naturalWidth} × ${image.naturalHeight} · ${fileSize(file.size)}`;
       byId('download-image').disabled = false;
-      setExportNote('exportInitial');
+      setExportNote(threadsPadding.checked ? 'exportPadded' : 'exportInitial');
       byId('use-file-date').disabled = false;
       previewZoom.value = '100';
       previewZoom.disabled = false;
@@ -547,6 +581,7 @@
     const pad = Math.round(width * 0.036);
     const footerTop = photoHeight;
     const footerBottom = photoHeight + footerHeight;
+    const output = outputMeasurements(image);
     const dividerX = Math.round(width * (portrait ? 0.555 : 0.69));
     const topLine = footerTop + footerHeight * 0.24;
     const dividerBottom = footerTop + footerHeight * 0.84;
@@ -554,18 +589,19 @@
     const subBaseline = footerTop + footerHeight * (portrait ? 0.73 : 0.76);
 
     const previewScale = targetCanvas === canvas
-      ? Math.min(1, Math.sqrt(previewMaxPixels / (width * footerBottom)))
+      ? Math.min(1, Math.sqrt(previewMaxPixels / (output.width * output.height)))
       : 1;
-    const outputWidth = Math.max(1, Math.round(width * previewScale));
-    const outputHeight = Math.max(1, Math.round(footerBottom * previewScale));
+    const outputWidth = Math.max(1, Math.round(output.width * previewScale));
+    const outputHeight = Math.max(1, Math.round(output.height * previewScale));
     // Resizing a canvas reallocates its bitmap, so retain it across field edits.
     if (targetCanvas.width !== outputWidth) targetCanvas.width = outputWidth;
     if (targetCanvas.height !== outputHeight) targetCanvas.height = outputHeight;
     const ctx = targetCanvas.getContext('2d', { alpha: false });
     if (!ctx) return false;
-    ctx.setTransform(targetCanvas.width / width, 0, 0, targetCanvas.height / footerBottom, 0, 0);
+    ctx.setTransform(targetCanvas.width / output.width, 0, 0, targetCanvas.height / output.height, 0, 0);
     ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, width, footerBottom);
+    ctx.fillRect(0, 0, output.width, output.height);
+    ctx.translate(output.offsetX, output.offsetY);
     ctx.drawImage(image, 0, 0, width, photoHeight);
 
     ctx.strokeStyle = '#d9d9d7';
@@ -681,9 +717,7 @@
     if (!image) return;
     const sourceFile = selectedFile;
     const baseName = (sourceFile?.name || 'ffxiv-screenshot').replace(/\.[^.]+$/, '').replace(/[\/:*?"<>|]/g, '_');
-    const { footerHeight } = frameMeasurements(image);
-    const fullWidth = image.naturalWidth;
-    const fullHeight = image.naturalHeight + footerHeight;
+    const { width: fullWidth, height: fullHeight } = outputMeasurements(image);
     const previewIsFullSize = canvas.width === fullWidth && canvas.height === fullHeight;
     const exportCanvas = previewIsFullSize ? canvas : document.createElement('canvas');
     try {
@@ -730,6 +764,10 @@
   });
   byId('download-image').addEventListener('click', downloadFrame);
   showCopyright.addEventListener('change', renderFrame);
+  threadsPadding.addEventListener('change', () => {
+    setExportNote(threadsPadding.checked ? 'exportPadded' : 'exportInitial');
+    renderFrame();
+  });
   previewZoom.addEventListener('input', () => {
     fitPreview();
   });
