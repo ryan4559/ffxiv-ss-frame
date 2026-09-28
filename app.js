@@ -173,6 +173,7 @@
   let loadToken = 0;
   let dateEditVersion = 0;
   let ambientCache = null;
+  let exportInProgress = false;
   const xivMark = new Image();
   xivMark.onload = () => renderFrame();
   xivMark.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(new XMLSerializer().serializeToString(byId('xiv-mark')))}`;
@@ -440,8 +441,11 @@
     // JPEG: search APP1 segments for the Exif TIFF directory.
     if (bytes.length > 4 && bytes[0] === 0xff && bytes[1] === 0xd8) {
       let offset = 2;
-      while (offset + 4 < bytes.length) {
+      while (offset + 4 <= bytes.length) {
         if (bytes[offset] !== 0xff) break;
+        // JPEG markers may have extra 0xFF fill bytes before the marker code.
+        while (offset + 1 < bytes.length && bytes[offset + 1] === 0xff) offset += 1;
+        if (offset + 4 > bytes.length) break;
         const marker = bytes[offset + 1];
         if (marker === 0xda || marker === 0xd9) break;
         const segmentLength = view.getUint16(offset + 2, false);
@@ -531,7 +535,7 @@
       byId('file-summary').hidden = false;
       byId('file-name').textContent = file.name;
       byId('file-size').textContent = `${image.naturalWidth} × ${image.naturalHeight} · ${fileSize(file.size)}`;
-      byId('download-image').disabled = false;
+      byId('download-image').disabled = exportInProgress;
       setExportNote(threadsPadding.checked ? 'exportPadded' : 'exportInitial');
       byId('use-file-date').disabled = false;
       previewZoom.value = '100';
@@ -765,42 +769,51 @@
   }
 
   function downloadFrame() {
-    if (!image) return;
-    const sourceFile = selectedFile;
-    const baseName = (sourceFile?.name || 'ffxiv-screenshot').replace(/\.[^.]+$/, '').replace(/[\/:*?"<>|]/g, '_');
-    const { width: fullWidth, height: fullHeight } = outputMeasurements(image);
-    const previewIsFullSize = canvas.width === fullWidth && canvas.height === fullHeight;
-    const exportCanvas = previewIsFullSize ? canvas : document.createElement('canvas');
-    try {
-      if (!previewIsFullSize && !renderFrame(exportCanvas)) throw new Error('Canvas context unavailable');
-    } catch (error) {
-      showToast('pngFailed');
-      return;
-    }
-    const outputWidth = exportCanvas.width;
-    const outputHeight = exportCanvas.height;
-    exportCanvas.toBlob((blob) => {
-      if (!previewIsFullSize) {
+    if (!image || exportInProgress) return;
+    exportInProgress = true;
+    const downloadButton = byId('download-image');
+    downloadButton.disabled = true;
+    let exportCanvas = null;
+    const finishExport = () => {
+      if (exportCanvas && exportCanvas !== canvas) {
         exportCanvas.width = 0;
         exportCanvas.height = 0;
       }
-      if (!blob) {
-        showToast('pngFailed');
-        return;
-      }
-      const url = URL.createObjectURL(blob);
-      const anchor = document.createElement('a');
-      anchor.href = url;
-      anchor.download = `${baseName}-frame.png`;
-      document.body.append(anchor);
-      anchor.click();
-      anchor.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1500);
-      if (selectedFile === sourceFile) {
-        setExportNote('exportComplete', { width: outputWidth.toLocaleString(language), height: outputHeight.toLocaleString(language) });
-      }
-      showToast('downloadStarted');
-    }, 'image/png');
+      exportInProgress = false;
+      downloadButton.disabled = !image;
+    };
+    try {
+      const sourceFile = selectedFile;
+      const baseName = (sourceFile?.name || 'ffxiv-screenshot').replace(/\.[^.]+$/, '').replace(/[\/:*?"<>|]/g, '_');
+      const { width: fullWidth, height: fullHeight } = outputMeasurements(image);
+      const previewIsFullSize = canvas.width === fullWidth && canvas.height === fullHeight;
+      exportCanvas = previewIsFullSize ? canvas : document.createElement('canvas');
+      if (!previewIsFullSize && !renderFrame(exportCanvas)) throw new Error('Canvas context unavailable');
+      const outputWidth = exportCanvas.width;
+      const outputHeight = exportCanvas.height;
+      exportCanvas.toBlob((blob) => {
+        finishExport();
+        if (!blob) {
+          showToast('pngFailed');
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = `${baseName}-frame.png`;
+        document.body.append(anchor);
+        anchor.click();
+        anchor.remove();
+        window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+        if (selectedFile === sourceFile) {
+          setExportNote('exportComplete', { width: outputWidth.toLocaleString(language), height: outputHeight.toLocaleString(language) });
+        }
+        showToast('downloadStarted');
+      }, 'image/png');
+    } catch (error) {
+      finishExport();
+      showToast('pngFailed');
+    }
   }
 
   fileInput.addEventListener('change', () => loadImage(fileInput.files?.[0]));
