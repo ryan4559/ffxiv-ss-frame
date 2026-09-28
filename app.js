@@ -131,7 +131,7 @@
   };
   let language = 'zh-Hant';
   let dateHintKey = 'dateInitial';
-  let exportNoteKey = 'exportInitial';
+  let exportNoteKey = threadsPadding.checked ? 'exportPadded' : 'exportInitial';
   let exportNoteParams = {};
   let toastKey = '';
 
@@ -624,11 +624,13 @@
     const scale = width / 1800;
     const pad = Math.round(width * 0.036);
     const footerTop = output.height - footerHeight;
+    const dividerShift = footerHeight * 0.04;
+    const contentShift = footerHeight * 0.05;
     const dividerX = Math.round(width * (portrait ? 0.555 : 0.69));
-    const topLine = footerTop + footerHeight * 0.24;
-    const dividerBottom = footerTop + footerHeight * 0.84;
-    const mainBaseline = footerTop + footerHeight * (portrait ? 0.47 : 0.51);
-    const subBaseline = footerTop + footerHeight * (portrait ? 0.73 : 0.76);
+    const topLine = footerTop + footerHeight * 0.24 - dividerShift;
+    const dividerBottom = footerTop + footerHeight * 0.84 - dividerShift;
+    const mainBaseline = footerTop + footerHeight * (portrait ? 0.47 : 0.51) - contentShift;
+    const subBaseline = footerTop + footerHeight * (portrait ? 0.73 : 0.76) - contentShift;
 
     const previewScale = targetCanvas === canvas
       ? Math.min(1, Math.sqrt(previewMaxPixels / (output.width * output.height)))
@@ -745,7 +747,7 @@
       } while (true);
       if (signatureLines.length > 3) signatureLines = [signatureLines[0], signatureLines[1], signatureLines.slice(2).join(' ')];
       ctx.font = signatureFont(signatureSize);
-      const firstBaseline = signatureLines.length === 1 ? subBaseline : footerTop + footerHeight * (signatureLines.length === 2 ? 0.66 : 0.63);
+      const firstBaseline = signatureLines.length === 1 ? subBaseline : footerTop + footerHeight * (signatureLines.length === 2 ? 0.66 : 0.63) - contentShift;
       const lineStep = footerHeight * (signatureLines.length === 2 ? 0.15 : 0.11);
       ctx.fillStyle = '#898e8e';
       ctx.textAlign = 'left';
