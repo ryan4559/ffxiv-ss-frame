@@ -814,7 +814,7 @@
     });
   });
   byId('download-image').addEventListener('click', downloadFrame);
-  showCopyright.addEventListener('change', renderFrame);
+  showCopyright.addEventListener('change', () => renderFrame());
   threadsPadding.addEventListener('change', () => {
     setExportNote(threadsPadding.checked ? 'exportPadded' : 'exportInitial');
     renderFrame();
