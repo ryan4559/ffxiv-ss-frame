@@ -29,7 +29,7 @@
     'zh-Hant': {
       description: '為 FFXIV 截圖加上可自訂的白色資訊底框，預覽並下載 PNG。日期可讀取圖片資訊或手動填寫，圖片僅在瀏覽器中處理。',
       language: '語言', toLight: '切換至淺色模式', toDark: '切換至深色模式',
-      hero: '為 FFXIV 截圖加上白色攝影資訊底框。填寫日期、光圈、快門、焦距與自訂文字，預覽後下載 PNG。',
+      hero: '為 FFXIV 截圖加上白色攝影資訊底框。拍攝參數可選填，也能加入自訂文字，預覽後下載 PNG。',
       editorLabel: '截圖資訊框編輯器', settingsTitle: '圖片與設定', settingsDescription: '選擇截圖，設定底框要顯示的內容。',
       dropBefore: '拖曳截圖到這裡，或', chooseImage: '選擇圖片', supportedFormats: '支援 PNG、JPG／JPEG、WebP',
       imageBadge: '圖片', imagePlaceholder: '截圖', replaceImage: '更換圖片', privacy: '圖片只在瀏覽器中處理，不會上傳。',
@@ -37,7 +37,7 @@
       aperture: '光圈', shutter: '快門', focal: '焦距', optional: '選填', useDefault: '預設',
       defaultAperture: '將光圈設為 f/2.8', defaultShutter: '將快門設為 1/150 秒', defaultFocal: '將焦距設為 77 mm', defaultIso: '將 ISO 設為 640',
       customText: '自訂文字', customPlaceholder: '輸入名字、角色名或想顯示的文字', customSize: '自訂文字大小',
-      customHint: '顯示在底框右側、拍攝參數下方；文字過長時會自動縮小。',
+      customHint: '顯示在底框右側；未填拍攝參數時會移至第一行。文字過長時會自動縮小。',
       threadsPaddingToggle: '延伸背景至 Threads 預覽比例',
       threadsPaddingHint: '直式 3:4、橫式 4:3、方形 1:1。保留完整截圖，以柔和背景補足外圍。',
       copyrightToggle: '在底框顯示 © SQUARE ENIX', copyrightHint: '原圖已有著作權標示時，可取消勾選。',
@@ -63,7 +63,7 @@
     en: {
       description: 'Add a customizable white information strip to FFXIV screenshots. Preview and download a PNG. Read the date from the image or enter it yourself. Images stay in your browser.',
       language: 'Language', toLight: 'Switch to light mode', toDark: 'Switch to dark mode',
-      hero: 'Add a white camera-style information strip to FFXIV screenshots. Enter the date, aperture, shutter speed, focal length, and custom text, then preview and download a PNG.',
+      hero: 'Add a white camera-style information strip to FFXIV screenshots. Camera settings are optional; add custom text, preview, and download a PNG.',
       editorLabel: 'Screenshot frame editor', settingsTitle: 'Image & settings', settingsDescription: 'Choose a screenshot and set the information shown in the frame.',
       dropBefore: 'Drop a screenshot here, or ', chooseImage: 'choose an image', supportedFormats: 'PNG, JPG/JPEG, WebP',
       imageBadge: 'IMG', imagePlaceholder: 'Screenshot', replaceImage: 'Replace image', privacy: 'Images are processed in your browser and are not uploaded.',
@@ -71,7 +71,7 @@
       aperture: 'Aperture', shutter: 'Shutter', focal: 'Focal length', optional: 'optional', useDefault: 'Default',
       defaultAperture: 'Set aperture to f/2.8', defaultShutter: 'Set shutter to 1/150 second', defaultFocal: 'Set focal length to 77 mm', defaultIso: 'Set ISO to 640',
       customText: 'Custom text', customPlaceholder: 'Name, character name, or other text', customSize: 'Custom text size',
-      customHint: 'Appears below the camera settings on the right side of the frame. Long text shrinks to fit.',
+      customHint: 'Appears on the right side of the frame. If all camera settings are blank, it moves to the first line. Long text shrinks to fit.',
       threadsPaddingToggle: 'Extend background for Threads previews',
       threadsPaddingHint: '3:4 portrait, 4:3 landscape, or 1:1 square. Keeps the full screenshot and fills the surrounding area with a soft background.',
       copyrightToggle: 'Show © SQUARE ENIX in the frame', copyrightHint: 'Turn this off if the original image already includes a copyright notice.',
@@ -97,7 +97,7 @@
     ja: {
       description: 'FFXIVのスクリーンショットに、編集できる白い撮影情報欄を追加します。日付は画像から読み取るか手入力でき、ブラウザー内でプレビューしてPNGを保存できます。',
       language: '言語', toLight: 'ライトモードに切り替え', toDark: 'ダークモードに切り替え',
-      hero: 'FFXIVのスクリーンショットに白い撮影情報欄を追加。日時、絞り、シャッター速度、焦点距離、自由入力の文字を設定し、プレビューしてPNGを保存できます。',
+      hero: 'FFXIVのスクリーンショットに白い撮影情報欄を追加。撮影設定は任意です。文字を追加してプレビューし、PNGを保存できます。',
       editorLabel: 'スクリーンショットのフレーム編集', settingsTitle: '画像と設定', settingsDescription: '画像を選び、情報欄に表示する内容を設定します。',
       dropBefore: '画像をここにドラッグするか、', chooseImage: '画像を選択', supportedFormats: 'PNG、JPG／JPEG、WebPに対応',
       imageBadge: '画像', imagePlaceholder: 'スクリーンショット', replaceImage: '画像を変更', privacy: '画像はブラウザー内だけで処理され、アップロードされません。',
@@ -105,7 +105,7 @@
       aperture: '絞り', shutter: 'シャッター', focal: '焦点距離', optional: '任意', useDefault: '初期値',
       defaultAperture: '絞りを f/2.8 に設定', defaultShutter: 'シャッターを 1/150 秒に設定', defaultFocal: '焦点距離を 77 mm に設定', defaultIso: 'ISO を 640 に設定',
       customText: '自由入力の文字', customPlaceholder: '名前、キャラクター名など', customSize: '文字の大きさ',
-      customHint: '情報欄の右側、撮影設定の下に表示します。長い文字は収まるように縮小されます。',
+      customHint: '情報欄の右側に表示します。撮影設定がすべて空欄の場合は1行目に移動します。長い文字は収まるように縮小されます。',
       threadsPaddingToggle: 'Threadsのプレビュー比率に合わせて背景を拡張',
       threadsPaddingHint: '縦長は3:4、横長は4:3、正方形は1:1。画像全体を残し、周囲を柔らかな背景で補います。',
       copyrightToggle: '情報欄に © SQUARE ENIX を表示', copyrightHint: '元画像に権利表記がある場合はオフにできます。',
@@ -707,43 +707,47 @@
     ctx.fillText(capture || '—', pad, subBaseline, dividerX - pad * 2);
 
     const focal = clean(fields.focal.value).replace(/\s*mm$/i, '');
-    const metrics = [
-      focal ? `${focal}mm` : '—mm',
-      clean(fields.aperture.value) ? `f/${clean(fields.aperture.value).replace(/^f\//i, '')}` : 'f/—',
-    ];
-    if (clean(fields.shutter.value)) metrics.push(clean(fields.shutter.value).replace(/s$/i, ''));
-    if (clean(fields.iso.value)) metrics.push(`ISO ${clean(fields.iso.value).replace(/^iso\s*/i, '')}`);
+    const aperture = clean(fields.aperture.value).replace(/^f\//i, '');
+    const shutter = clean(fields.shutter.value).replace(/s$/i, '');
+    const iso = clean(fields.iso.value).replace(/^iso\s*/i, '');
+    const metrics = [];
+    if (focal) metrics.push(`${focal}mm`);
+    if (aperture) metrics.push(`f/${aperture}`);
+    if (shutter) metrics.push(shutter);
+    if (iso) metrics.push(`ISO ${iso}`);
 
     const rightX = dividerX + Math.round(width * (portrait ? 0.018 : 0.025));
     const rightEnd = width - pad;
     const availableWidth = rightEnd - rightX;
-    const minGap = Math.max(8, Math.round(width * 0.012));
-    const valueFont = (size) => `500 ${size}px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", Arial, sans-serif`;
-    const metricWidths = (size) => {
-      ctx.font = valueFont(size);
-      return metrics.map((metric) => ctx.measureText(metric).width);
-    };
-    let metricFont = Math.round(Math.max(21, Math.min(footerHeight * 0.24, width * (portrait ? 0.032 : 0.03))));
-    let widths = metricWidths(metricFont);
-    const totalWidth = () => widths.reduce((sum, value) => sum + value, 0) + minGap * (metrics.length - 1);
-    while (metricFont > 12 && totalWidth() > availableWidth) {
-      metricFont -= 1;
-      widths = metricWidths(metricFont);
+    if (metrics.length) {
+      const minGap = Math.max(8, Math.round(width * 0.012));
+      const valueFont = (size) => `500 ${size}px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", Arial, sans-serif`;
+      const metricWidths = (size) => {
+        ctx.font = valueFont(size);
+        return metrics.map((metric) => ctx.measureText(metric).width);
+      };
+      let metricFont = Math.round(Math.max(21, Math.min(footerHeight * 0.24, width * (portrait ? 0.032 : 0.03))));
+      let widths = metricWidths(metricFont);
+      const totalWidth = () => widths.reduce((sum, value) => sum + value, 0) + minGap * (metrics.length - 1);
+      while (metricFont > 12 && totalWidth() > availableWidth) {
+        metricFont -= 1;
+        widths = metricWidths(metricFont);
+      }
+      const constrained = totalWidth() > availableWidth;
+      if (constrained) widths = metrics.map(() => (availableWidth - minGap * (metrics.length - 1)) / metrics.length);
+      const gap = metrics.length === 1 ? 0 : constrained ? minGap : Math.min(
+        (availableWidth - widths.reduce((sum, value) => sum + value, 0)) / (metrics.length - 1),
+        width * 0.03,
+      );
+      let metricX = rightX;
+      metrics.forEach((metric, index) => {
+        ctx.fillStyle = metric.includes('—') ? '#a2a6a5' : '#171a1b';
+        ctx.textAlign = 'left';
+        ctx.font = valueFont(metricFont);
+        ctx.fillText(metric, metricX, mainBaseline, widths[index]);
+        metricX += widths[index] + gap;
+      });
     }
-    const constrained = totalWidth() > availableWidth;
-    if (constrained) widths = metrics.map(() => (availableWidth - minGap * (metrics.length - 1)) / metrics.length);
-    const gap = constrained ? minGap : Math.min(
-      (availableWidth - widths.reduce((sum, value) => sum + value, 0)) / (metrics.length - 1),
-      width * 0.03,
-    );
-    let metricX = rightX;
-    metrics.forEach((metric, index) => {
-      ctx.fillStyle = metric.includes('—') ? '#a2a6a5' : '#171a1b';
-      ctx.textAlign = 'left';
-      ctx.font = valueFont(metricFont);
-      ctx.fillText(metric, metricX, mainBaseline, widths[index]);
-      metricX += widths[index] + gap;
-    });
 
     const signature = clean(fields.signature.value);
     if (signature) {
@@ -763,7 +767,11 @@
       } while (true);
       if (signatureLines.length > 3) signatureLines = [signatureLines[0], signatureLines[1], signatureLines.slice(2).join(' ')];
       ctx.font = signatureFont(signatureSize);
-      const firstBaseline = signatureLines.length === 1 ? subBaseline : footerTop + footerHeight * (signatureLines.length === 2 ? 0.66 : 0.63) - contentShift;
+      let firstBaseline = mainBaseline;
+      if (metrics.length) {
+        firstBaseline = signatureLines.length === 1 ? subBaseline
+          : footerTop + footerHeight * (signatureLines.length === 2 ? 0.66 : 0.63) - contentShift;
+      }
       const lineStep = footerHeight * (signatureLines.length === 2 ? 0.15 : 0.11);
       ctx.fillStyle = '#898e8e';
       ctx.textAlign = 'left';

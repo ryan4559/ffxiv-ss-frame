@@ -9,7 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="xiv-favicon.svg?v=3">
     <script>try { if (localStorage.getItem('ffxiv-frame-theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (error) {}</script>
     <link rel="stylesheet" href="styles.css?v=11">
-    <script src="app.js?v=14" defer></script>
+    <script src="app.js?v=15" defer></script>
   </head>
   <body>
     <div class="page-shell">
@@ -50,7 +50,7 @@
 
       <main id="top">
         <div class="hero">
-          <p class="hero-copy" data-i18n="hero">為 FFXIV 截圖加上白色攝影資訊底框。填寫日期、光圈、快門、焦距與自訂文字，預覽後下載 PNG。</p>
+          <p class="hero-copy" data-i18n="hero">為 FFXIV 截圖加上白色攝影資訊底框。拍攝參數可選填，也能加入自訂文字，預覽後下載 PNG。</p>
         </div>
 
         <section class="studio" aria-label="截圖資訊框編輯器" data-i18n-label="editorLabel">
@@ -93,7 +93,7 @@
             <div class="field-grid">
               <div class="field-block">
                 <div class="field-title-row">
-                  <label for="aperture" data-i18n="aperture">光圈</label>
+                  <label for="aperture"><span data-i18n="aperture">光圈</span> <span class="optional-label" data-i18n="optional">選填</span></label>
                   <button class="small-button" type="button" data-default-field="aperture" data-i18n="useDefault" data-default-label="aperture">預設</button>
                 </div>
                 <div class="input-with-unit"><span aria-hidden="true">f/</span><input id="aperture" type="text" inputmode="decimal" placeholder="2.8" autocomplete="off"></div>
@@ -107,7 +107,7 @@
               </div>
               <div class="field-block">
                 <div class="field-title-row">
-                  <label for="focal-length" data-i18n="focal">焦距</label>
+                  <label for="focal-length"><span data-i18n="focal">焦距</span> <span class="optional-label" data-i18n="optional">選填</span></label>
                   <button class="small-button" type="button" data-default-field="focal" data-i18n="useDefault" data-default-label="focal">預設</button>
                 </div>
                 <div class="input-with-unit"><input id="focal-length" type="text" inputmode="decimal" placeholder="77" autocomplete="off"><span aria-hidden="true">mm</span></div>
@@ -130,7 +130,7 @@
               </div>
               <input class="signature-size-slider" id="signature-size" type="range" min="60" max="160" step="5" value="100">
               <span class="signature-size-ticks" aria-hidden="true"></span>
-              <p class="field-hint" data-i18n="customHint">顯示在底框右側、拍攝參數下方；文字過長時會自動縮小。</p>
+              <p class="field-hint" data-i18n="customHint">顯示在底框右側；未填拍攝參數時會移至第一行。文字過長時會自動縮小。</p>
             </div>
 
             <label class="option-toggle threads-toggle">
